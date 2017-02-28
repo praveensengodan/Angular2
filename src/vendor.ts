@@ -10,3 +10,6 @@ import '@angular/router';
 import 'rxjs';
 import 'zone.js';
 import 'reflect-metadata';
+
+// styles
+import './assets/bootstrap.min.css';
