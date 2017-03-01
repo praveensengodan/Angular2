@@ -24,7 +24,9 @@ module.exports = {
       {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
-      }
+      },
+      { test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000' },
+      { test: /\.(ttf|eot)$/, loader: 'file-loader' }
     ]
   },
   plugins: [new HtmlWebpackPlugin({

@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
-import {IProduct} from './product';
+import { Component, OnInit } from '@angular/core';
+import { IProduct } from './product';
+import { ProductService } from './product.service';
 
 @Component({
   selector: 'pm-products',
@@ -23,36 +24,32 @@ import {IProduct} from './product';
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor = 'let product of products'>
+                    <tr *ngFor = 'let product of products | productFilter : filterValue'>
                       <td>
                         <img  *ngIf = 'showImage' [src] = 'product.image' [title] = 'product.productName' style='width:50px; margin: 2px'/>
                       </td>
                       <td>{{product.productName}}</td>
                       <td>{{product.price | currency:'INR':true:'1.2-2'}}</td>
-                      <td>{{product.rating}}</td>
+                      <td><pm-rating [rating]='product.rating' (ratingClicked)='onRatingClicked($event)'></pm-rating></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>`
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit {
+  constructor(private _productService: ProductService) {}
   pageTitle: string = 'Product List';
   showImage: boolean = false;
-  filterValue: string = 'test';
+  filterValue: string;
+  onRatingClicked(message: string): void {
+    this.pageTitle= `Poduct List - ${message}`
+  }
   toggleImage(): void {
     this.showImage = !this.showImage
   }
-  products: IProduct[] = [{
-    productName: 'Joy stick',
-    price: 150,
-    image: 'https://openclipart.org/download/246396/JoyStick.svg',
-    rating: 4.2
-  },
-  {
-    productName: 'Hammer',
-    price: 100,
-    image: 'https://openclipart.org/download/193438/freehammer.svg',
-    rating: 3.8
-  }]
+  products: IProduct[];
+  ngOnInit(): void {
+    this.products = this._productService.getProducts();
+  }
 }
