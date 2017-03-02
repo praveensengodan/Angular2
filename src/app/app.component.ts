@@ -3,10 +3,15 @@ import { ProductService } from '../products/product.service';
 
 @Component({
   selector: 'pm-app',
-  template: `
-  <h1>{{pageTitle}}</h1>
-  <pm-products></pm-products>
+  template:
+  `<div class='container-fluid'>
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a [routerLink]="['/welcome']">Home</a></li>
+      <li role="presentation"><a [routerLink]="['/product']">Product</a></li>
+    </ul>
+    <router-outlet></router-outlet>
+  </div>
   `,
   providers: [ProductService]
 })
-export class AppComponent { pageTitle: string = 'Product Management'; }
+export class AppComponent {}
