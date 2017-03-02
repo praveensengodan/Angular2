@@ -1,4 +1,7 @@
+// Angular
 import { Component } from '@angular/core';
+
+// Services
 import { ProductService } from '../products/product.service';
 
 @Component({

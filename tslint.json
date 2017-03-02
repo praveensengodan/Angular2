@@ -1,0 +1,16 @@
+{
+  "rules": {
+    "indent": [true, "tab"],
+    "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
+    "class-name": true,
+    "arrow-return-shorthand": [true],
+    "import-spacing": true,
+    "semicolon": [true, "always"],
+    "quotemark": [true, "single", "avoid-escape"],
+    "no-trailing-whitespace": true,
+    "prefer-const": true,
+    "max-line-length": [true, 120],
+    "align": [true, "parameters", "arguments", "statements"],
+    "interface-name": [true, "always-prefix"]
+  }
+}

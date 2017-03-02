@@ -1,6 +1,11 @@
+// Angular
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from './product';
+
+// Service
 import { ProductService } from './product.service';
+
+// Interface
+import { IProduct } from './product';
 
 @Component({
   selector: 'pm-products',
@@ -28,7 +33,10 @@ import { ProductService } from './product.service';
         <tbody>
           <tr *ngFor = 'let product of products | productFilter : filterValue'>
             <td>
-              <img  *ngIf = 'showImage' [src] = 'product.image' [title] = 'product.productName' style='width:50px; margin: 2px'/>
+              <img  *ngIf = 'showImage' [src] = 'product.image'
+                [title] = 'product.productName' 
+                style='width:50px; margin: 2px'
+              />
             </td>
             <td><a [routerLink] = "['/product',product.id]">{{product.productName}}</a></td>
             <td>{{product.price | currency:'INR':true:'1.2-2'}}</td>
@@ -45,10 +53,10 @@ export class ProductComponent implements OnInit {
   showImage: boolean = false;
   filterValue: string;
   onRatingClicked(message: string): void {
-    this.pageTitle= `Poduct List - ${message}`
+    this.pageTitle= `Poduct List - ${message}`;
   }
   toggleImage(): void {
-    this.showImage = !this.showImage
+    this.showImage = !this.showImage;
   }
   products: IProduct[];
   ngOnInit(): void {

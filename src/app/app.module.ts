@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 // Components
-import { AppComponent }  from './app.component';
+import { AppComponent } from './app.component';
 import { ProductComponent } from '../products/product-list.component';
 import { ProductFilterPipe } from '../products/product-filter.pipe';
 import { RatingComponent } from '../shared/RatingComponent/rating.component';
@@ -14,7 +14,7 @@ import { WelcomeComponent } from '../home/welcome.component';
 import { ProductDetails } from '../products/product-details.component';
 
 @NgModule({
-  imports: [ 
+  imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -24,9 +24,9 @@ import { ProductDetails } from '../products/product-details.component';
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', component: WelcomeComponent }
-    ]) 
+    ])
   ],
-  declarations: [ 
+  declarations: [
     AppComponent,
     ProductComponent,
     ProductFilterPipe,
