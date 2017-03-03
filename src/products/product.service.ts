@@ -15,9 +15,12 @@ export class ProductService {
   _url = `http://localhost:3000/products`;
   getProducts(): Observable<IProduct[]> {
     return this._http.get(this._url)
-    .map((response: Response) => <IProduct[]> response.json())
+    .map((response: Response) => <IProduct[]> response.json());
   }
   getProduct(id): Observable<IProduct> {
-    return this._http.get(`${this._url}/${id}`).map((response: Response) => <IProduct>response.json())
+    return this._http.get(`${this._url}/${id}`).map((response: Response) => <IProduct>response.json());
+  }
+  saveProduct(product): Observable<IProduct> {
+    return this._http.post(this._url , product).map((response: Response) => <IProduct>response.json());
   }
 }

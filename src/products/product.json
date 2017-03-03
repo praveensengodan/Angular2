@@ -1,5 +1,5 @@
 {
-  "products" :[
+  "products": [
     {
       "productName": "Joy stick",
       "id": 1,
@@ -13,6 +13,13 @@
       "price": 100,
       "image": "https://openclipart.org/download/193438/freehammer.svg",
       "rating": 3.5
+    },
+    {
+      "productName": "Cofee Cup",
+      "price": 20,
+      "image": "https://openclipart.org/download/242423/160226_coffee_cup.svg",
+      "rating": 3,
+      "id": 3
     }
   ]
 }

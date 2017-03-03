@@ -1,5 +1,6 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 // Service
 import { ProductService } from './product.service';
@@ -11,7 +12,11 @@ import { IProduct } from './product';
   selector: 'pm-products',
   template: `
   <div class="panel panel-primary">
-    <div class="panel-heading">{{pageTitle}}</div>
+    <div class="panel-heading">{{pageTitle}}
+       <div class="pull-right">
+        <button class="btn btn-default" (click)='addProduct()'>New Product</button>
+      </div>
+    </div>
     <div class="panel-body">
     <div>
       <label>Filter By</label>
@@ -48,7 +53,7 @@ import { IProduct } from './product';
   </div>`
 })
 export class ProductComponent implements OnInit {
-  constructor(private _productService: ProductService) {}
+  constructor(private _productService: ProductService, private _router: Router) {}
   pageTitle: string = 'Product List';
   showImage: boolean = false;
   filterValue: string;
@@ -64,5 +69,8 @@ export class ProductComponent implements OnInit {
       this.products = products;
       console.log(products);
     });
+  }
+  addProduct(): void {
+    this._router.navigate(['./add']);
   }
 }

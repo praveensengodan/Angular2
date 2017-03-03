@@ -12,6 +12,7 @@ import { ProductFilterPipe } from '../products/product-filter.pipe';
 import { RatingComponent } from '../shared/RatingComponent/rating.component';
 import { WelcomeComponent } from '../home/welcome.component';
 import { ProductDetails } from '../products/product-details.component';
+import { AddProductComponent } from '../products/product-add.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { ProductDetails } from '../products/product-details.component';
     RouterModule.forRoot([
       { path: 'product', component: ProductComponent },
       { path: 'product/:id', component: ProductDetails },
+      { path: 'add', component: AddProductComponent },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', component: WelcomeComponent }
@@ -32,7 +34,8 @@ import { ProductDetails } from '../products/product-details.component';
     ProductFilterPipe,
     RatingComponent,
     WelcomeComponent,
-    ProductDetails
+    ProductDetails,
+    AddProductComponent
   ],
   bootstrap: [ AppComponent ]
 })
