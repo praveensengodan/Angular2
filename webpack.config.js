@@ -1,5 +1,4 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -25,18 +24,13 @@ module.exports = {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
       },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
       { test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000' },
       { test: /\.(ttf|eot)$/, loader: 'file-loader' }
     ]
   },
-  plugins: [new HtmlWebpackPlugin({
-    title: 'Angular 2 App',
-    template: './index.html'
-  }),
-    new webpack.HotModuleReplacementPlugin(),
-  ],
-  devServer: {
-    hot: true,
-    contentBase: './build'
-  }
+  plugins: []
 };

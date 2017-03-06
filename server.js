@@ -1,23 +1,35 @@
-var WebpackDevServer = require("webpack-dev-server");
-var webpack = require("webpack");
-var config = require("./webpack.config.js");
+const webpackDevMiddleware = require("webpack-dev-middleware");
+const webpackHotMiddleware = require("webpack-hot-middleware");
+const webpack = require("webpack");
+const config = require("./webpack.config.js");
+const path = require('path');
+const express = require('express');
+const app = express();
 
-var compiler = webpack(config);
-var server = new WebpackDevServer(compiler, {
+const compiler = webpack(config);
+
+// Middleware configuration
+app.use(webpackDevMiddleware(compiler,{
+  stats: { colors: true },
   hot: true,
-  contentBase: './build',
-  historyApiFallback: {
-    index: './build/index.html'
-  },
   quiet: false,
   noInfo: false,
   watchOptions: {
     aggregateTimeout: 300,
     poll: 1000
   },
-  stats: { colors: true },
-  publicPath: config.output.publicPath,
+  index: (path.join(__dirname + '/index.html')),
+  publicPath: "/build/"
+}));
+app.use(webpackHotMiddleware(compiler));
+
+// Static file
+app.use(express.static('build'));
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
 });
-server.listen(8080,function() {
-  console.info('localhost runing at 8000');
-});
+
+// Server
+app.listen(8080, function () {
+  console.log('Example app listening on port 8080!')
+})
