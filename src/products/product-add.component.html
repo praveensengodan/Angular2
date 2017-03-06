@@ -2,23 +2,27 @@
     <div class="panel-heading">{{pageTitle}}</div>
     <div class="panel-body">
       <form #form="ngForm" (ngSubmit)='onFormSubmit(form)' novalidate>
-        <div class="form-group">
-          <label>Product Name</label>
-          <input type="text" class='form-control' name='productName' [(ngModel)]='productName' />
+        <div class="form-group" [class.has-error]='productName.invalid && productName.dirty'>
+          <label class="control-label">Product Name</label>
+          <input type="text" #productName='ngModel' required class='form-control' name='productName' [(ngModel)]='product.productName' />
+          <div class="alert alert-danger" *ngIf='productName.invalid && productName.dirty' role="alert">Please Enter Product Name</div>
         </div>
-        <div class="form-group">
+        <div class="form-group" [class.has-error]='price.invalid && price.dirty'>
           <label>Price</label>
-          <input type="number" class='form-control' name='price'  [(ngModel)]='price' />
+          <input type="number" #price='ngModel' required class='form-control' name='price'  [(ngModel)]='product.price' />
+           <div class="alert alert-danger" *ngIf='price.invalid && price.dirty'>Please Enter Price</div>
         </div>
-         <div class="form-group">
+         <div class="form-group" [class.has-error]='rating.invalid && rating.dirty'>
           <label>Rating</label>
-          <input type="number" class='form-control' name='rating'  [(ngModel)]='rating' min=0 max=5/>
+          <input type="number" #rating='ngModel' required class='form-control' name='rating'  [(ngModel)]='product.rating' min=0 max=5/>
+          <div class="alert alert-danger" *ngIf='rating.invalid && rating.dirty'>Please Enter Price</div>
         </div>
-        <div class="form-group">
+        <div class="form-group" [class.has-error]='image.invalid && image.dirty'>
           <label>Image</label>
-          <input type="text" class='form-control' name='image'  [(ngModel)]='image' />
+          <input type="text" #image='ngModel' required class='form-control' name='image'  [(ngModel)]='product.image' />
+          <div class="alert alert-danger" *ngIf='image.invalid && image.dirty'>Please Enter Price</div>
         </div>
-        <button class="btn btn-primary" type="submit">Add</button>
+        <button class="btn btn-primary" [disabled]='form.invalid' type="submit">Add</button>
         <button class="btn btn-default" (click)='onBack()'>Back</button>
       </form>
     </div>
