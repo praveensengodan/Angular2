@@ -1,0 +1,29 @@
+ <div class="panel panel-primary">
+    <div class="panel-heading">{{pageTitle}}</div>
+    <div class="panel-body">
+      <form [formGroup]='productForm' (ngSubmit)='onFormSubmit()' novalidate>
+        <div class="form-group" [class.has-error]='productForm.get("productName").invalid && productForm.get("productName").dirty'>
+          <label class="control-label">Product Name</label>
+          <input type="text" formControlName='productName' class='form-control'/>
+          <div class="alert alert-danger" *ngIf='productForm.get("productName").invalid && productForm.get("productName").dirty' role="alert">Please Enter Product Name</div>
+        </div>
+        <div class="form-group" [class.has-error]='productForm.get("price").invalid && productForm.get("price").dirty'>
+          <label>Price</label>
+          <input type="number" formControlName='price' class='form-control' />
+           <div class="alert alert-danger" *ngIf='productForm.get("price").invalid && productForm.get("price").dirty'>Please Enter Price</div>
+        </div>
+         <div class="form-group" [class.has-error]='productForm.get("rating").invalid && productForm.get("rating").dirty'>
+          <label>Rating</label>
+          <input type="number" formControlName='rating' class='form-control'  min=0 max=5/>
+          <div class="alert alert-danger" *ngIf='productForm.get("rating").invalid && productForm.get("rating").dirty'>Please Enter Price</div>
+        </div>
+        <div class="form-group" [class.has-error]='productForm.get("image").invalid && productForm.get("image").dirty'>
+          <label>Image</label>
+          <input type="text" formControlName='image' class='form-control' />
+          <div class="alert alert-danger" *ngIf='productForm.get("image").invalid && productForm.get("image").dirty'>Please Enter Price</div>
+        </div>
+        <button class="btn btn-primary" [disabled]='productForm.invalid' type="submit">Add</button>
+        <button class="btn btn-default" (click)='onBack()'>Back</button>
+      </form>
+    </div>
+  </div>

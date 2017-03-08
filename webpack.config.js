@@ -1,12 +1,13 @@
-const path = require('path');
+const path= require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: {app:'./src/main.ts',vendor:'./src/vendor.ts'},
+  entry: {app:'./main.ts',vendor:'./vendor.ts'},
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'build')
   },
+  context: path.resolve(__dirname, 'src'),
   resolve: {
     extensions: ['.ts','.js'],
     modules: [

@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 // Service
-import { ProductService } from './product.service';
+import { ProductService } from '../product.service';
 
 // Model
-import { Product } from './product.model';
+import { Product } from '../product.model';
 
 // Interface
-import { IProduct } from './product';
+import { IProduct } from '../product';
 
 @Component({
   template: require('./product-add.component.html')
