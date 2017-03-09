@@ -17,10 +17,16 @@ export class ProductService {
     return this._http.get(this._url)
     .map((response: Response) => <IProduct[]> response.json());
   }
-  getProduct(id): Observable<IProduct> {
+  getProduct(id: number): Observable<IProduct> {
     return this._http.get(`${this._url}/${id}`).map((response: Response) => <IProduct>response.json());
   }
-  saveProduct(product): Observable<IProduct> {
+  saveProduct(product: IProduct): Observable<IProduct> {
     return this._http.post(this._url , product).map((response: Response) => <IProduct>response.json());
+  }
+  updateProduct(id: number,product: IProduct): Observable<IProduct> {
+    return this._http.put(`${this._url}/${id}` , product).map((response: Response) => <IProduct>response.json());
+  }
+  deleteProduct(id: number): Observable<IProduct> {
+     return this._http.delete(`${this._url}/${id}`).map((response: Response) => <IProduct>response.json());
   }
 }

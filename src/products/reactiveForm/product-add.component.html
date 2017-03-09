@@ -32,8 +32,8 @@
           <input type="text" formControlName='image' class='form-control' />
           <div class="alert alert-danger" *ngIf='productForm.get("image").invalid && productForm.get("image").dirty'>Please Enter image</div>
         </div>
-        <button class="btn btn-primary" [disabled]='productForm.invalid' type="submit">Add</button>
-        <button class="btn btn-default" (click)='onBack()'>Back</button>
+        <button class="btn btn-primary" [disabled]='productForm.invalid' type="submit">{{id ? 'Edit' : 'Add'}}</button>
+        <button class="btn btn-default" type='button' (click)='onBack()'>Back</button>
       </form>
     </div>
   </div>

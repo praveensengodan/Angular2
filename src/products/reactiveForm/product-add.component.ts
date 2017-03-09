@@ -24,6 +24,7 @@ export class AddProduct implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute
     ){}
+  id: number;
   product: IProduct = new Product();
   productForm: FormGroup;
   onFormSubmit(): void {
@@ -35,10 +36,17 @@ export class AddProduct implements OnInit {
        image: image.value,
        rating: rating.value
      };
-     this._productService.saveProduct(payload).subscribe(()=>{
-       alert('Product Saved Successfully');
-       this._router.navigate(['./product']);
-     });
+     if(this.id){
+       this._productService.updateProduct(this.id, payload).subscribe(()=>{
+        alert('Product Updated Successfully');
+        this._router.navigate(['./product']);
+      });
+     } else {
+       this._productService.saveProduct(payload).subscribe(()=>{
+        alert('Product Saved Successfully');
+        this._router.navigate(['./product']);
+      });
+     }
   }
   initDesc(): FormGroup {
     return this._formBuilder.group({
@@ -49,17 +57,34 @@ export class AddProduct implements OnInit {
     const description: FormArray = <FormArray> this.productForm.controls['descriptions'];
     description.push(this.initDesc());
   }
+  populateDesc(descriptions): void {
+    const descriptionsFormArray: FormArray = <FormArray> this.productForm.controls['descriptions'];
+    descriptions.map((description,index)=>{
+      if(index === 1) {
+        descriptionsFormArray.push(this.initDesc());
+      }
+    });
+  }
   ngOnInit(): void {
-    this.productForm = this._formBuilder.group({
-      productName: ['', [Validators.required, Validators]],
-      price: [null, [Validators.required]],
-      rating: [null, [Validators.required,rating(1,5)]],
-      image: ['', [Validators.required]],
-      descriptions: this._formBuilder.array([this.initDesc()])
-    });
-    this._productService.getProduct(this._route.snapshot.params['id']).subscribe((product: Product)=>{
-      console.log(product);
-      this.product = product;
-    });
+      this.productForm = this._formBuilder.group({
+        productName: ['', [Validators.required, Validators]],
+        price: [null, [Validators.required]],
+        rating: [null, [Validators.required,rating(1,5)]],
+        image: ['', [Validators.required]],
+        descriptions: this._formBuilder.array([this.initDesc()])
+      });
+      this.id = this._route.snapshot.params['id'] ?  this._route.snapshot.params['id'] : null;
+      if(this.id){
+        this._productService.getProduct(this.id).subscribe((product: Product)=>{
+          this.populateDesc(product.descriptions);
+          this.productForm.patchValue({
+            productName: product.productName,
+            price: product.price,
+            rating: product.rating,
+            image: product.image,
+            descriptions: product.descriptions
+          });
+        });
+      }
   }
 }

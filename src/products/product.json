@@ -4,12 +4,12 @@
       "productName": "Joy stick",
       "descriptions": [
         {
-          "description": "Joy stick"
+          "description": "Joy Stick"
         }
       ],
-      "price": 150,
+      "price": 157,
       "image": "https://openclipart.org/download/246396/JoyStick.svg",
-      "rating": 4.2,
+      "rating": 4.8,
       "id": 1
     },
     {
@@ -19,28 +19,40 @@
           "description": "This is a Hammer"
         },
         {
-          "description": "Used as a hardwareTools"
+          "description": "Made with wooden handle and Iron"
         }
       ],
-      "price": 100,
+      "price": 250,
       "image": "https://openclipart.org/download/193438/freehammer.svg",
-      "rating": 3.5,
+      "rating": 2.7,
       "id": 2
     },
     {
-      "productName": "Cofee Cup",
+      "productName": "Coffe Mug",
       "descriptions": [
         {
-          "description": "Cofee Cup"
+          "description": "Coffee Mug"
         },
         {
-          "description": "Cofee Cup"
+          "description": "Made of ceramic"
         }
       ],
-      "price": 20,
+      "price": 50,
       "image": "https://openclipart.org/download/242423/160226_coffee_cup.svg",
-      "rating": 3,
+      "rating": 2,
       "id": 3
+    },
+    {
+      "productName": "test",
+      "descriptions": [
+        {
+          "description": "test"
+        }
+      ],
+      "price": 1,
+      "image": "tests",
+      "rating": 1,
+      "id": 4
     }
   ]
 }
