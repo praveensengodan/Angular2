@@ -25,6 +25,7 @@ import { AddProduct } from 'products/reactiveForm/product-add.component';
       { path: 'product', component: ProductComponent },
       { path: 'product/:id', component: ProductDetails },
       { path: 'add', component: AddProduct },
+      { path: 'add/:id', component: AddProduct },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', component: WelcomeComponent }

@@ -20,6 +20,7 @@
             <th>Products</th>
             <th>Price</th>
             <th>Rating</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +34,11 @@
             <td><a [routerLink] = "['/product',product.id]">{{product.productName}}</a></td>
             <td>{{product.price | currency:'INR':true:'1.2-2'}}</td>
             <td><pm-rating [rating]='product.rating' (ratingClicked)='onRatingClicked($event)'></pm-rating></td>
+            <td>
+              <button type='button' class="btn btn-primary" (click)='editProduct(product.id)'>
+                <span class="glyphicon glyphicon-edit"></span>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
