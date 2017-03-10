@@ -41,18 +41,6 @@
       "image": "https://openclipart.org/download/242423/160226_coffee_cup.svg",
       "rating": 2,
       "id": 3
-    },
-    {
-      "productName": "test",
-      "descriptions": [
-        {
-          "description": "test"
-        }
-      ],
-      "price": 1,
-      "image": "tests",
-      "rating": 1,
-      "id": 4
     }
   ]
 }

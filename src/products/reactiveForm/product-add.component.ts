@@ -53,6 +53,9 @@ export class AddProduct implements OnInit {
       description: ['',[Validators.required]]
     });
   }
+  onBack(): void {
+    this._router.navigate(['./product']);
+  }
   addDescription(): void{
     const description: FormArray = <FormArray> this.productForm.controls['descriptions'];
     description.push(this.initDesc());

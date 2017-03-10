@@ -39,6 +39,9 @@ export class ProductComponent implements OnInit {
   deleteProduct(id: number): void {
     this._productService.deleteProduct(id).subscribe(()=>{
       alert('Deleted Successfuly');
+      this._productService.getProducts().subscribe((products)=> {
+        this.products = products;
+      });
     });
   }
 }
