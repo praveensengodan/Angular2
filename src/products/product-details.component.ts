@@ -11,30 +11,7 @@ import { IProduct } from './product';
 @Component({
   styles: [ `.product-details {display: flex;
     justify-content: space-around;}`] ,
-  template: `
-  <div class="panel panel-primary">
-    <div class="panel-heading">{{pageTitle}}</div>
-    <div class="panel-body">
-      <div *ngIf="product" class="product-details">
-        <div>
-           <div>
-              <label>Product Name:</label>
-              {{product.productName}}
-            </div>
-            <div>
-              <label>Price:</label>
-              {{product.price}}
-            </div>
-            <div>
-              <label>Rating:</label>
-              <pm-rating [rating]='product.rating'></pm-rating>
-            </div>
-          </div>
-          <div><img [src]='product.image' [title] = 'product.productName'/></div>
-        </div>      
-     <button class="btn btn-primary" (click)='onBack()'>Back</button>
-    </div>
-  </div>`
+  template: require('./product-details.component.html')
 })
 export class ProductDetails implements OnInit {
   constructor( private _route: ActivatedRoute,
